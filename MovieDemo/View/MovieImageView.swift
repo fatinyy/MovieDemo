@@ -50,33 +50,43 @@ struct MovieImageView: View {
                 .fontWeight(.bold)
                 .padding(.horizontal)
                 .background(Color.black)
-
-            HStack(alignment: .top) {
-                LazyVStack(spacing: 8) {
-                    ForEach(splitArray[0]) { movie in
-                        NavigationLink(destination: MovieDetailView(movieId: movie.id)){
-                            MovieCardView(movie: movie)
-                        }.buttonStyle(PlainButtonStyle())
-                            .padding(.leading, movie.id == self.movies.first!.id ? 16 : 0)
-                            .padding(.trailing, movie.id == self.movies.last!.id ? 16 : 0)
-                           
-                    }
-                }
+            ScrollView(.vertical, showsIndicators: false) {
                 
-                LazyVStack(spacing: 8) {
-                    ForEach(splitArray[1]) { movie in
-                        
-                        NavigationLink(destination: MovieDetailView(movieId: movie.id)){
-                            MovieCardView(movie: movie)
-                        }.buttonStyle(PlainButtonStyle())
-                            .padding(.leading, movie.id == self.movies.first!.id ? 16 : 0)
-                            .padding(.trailing, movie.id == self.movies.last!.id ? 16 : 0)
+                HStack(alignment: .top) {
+                    
+                    LazyVStack(spacing: 8) {
+                        ForEach(splitArray[0]) { movie in
+                            NavigationLink(destination: MovieDetailView(movieId: movie.id)){
+                                
+                                MovieCardView(movie: movie)
+                            }.buttonStyle(PlainButtonStyle())
                             
+                            
+                        }
+                    }
+               
+                    
+                    
+                    
+                    
+                    ScrollView(.vertical, showsIndicators: false) {
+           
+                        LazyVStack(spacing: 8) {
+                            ForEach(splitArray[1]) { movie in
+                                
+                                NavigationLink(destination: MovieDetailView(movieId: movie.id)){
+                                    MovieCardView(movie: movie)
+                                }.buttonStyle(PlainButtonStyle())
+
+                            }
+                            
+                            .padding(.leading)
+                        }
                     }
                 }
                 
-        
             }
+        
             .background(Color.black)
         }
         .background(Color.black)

@@ -15,7 +15,7 @@ struct ProfileView: View {
             VStack {
                 AvatarView(isPremium: isPremium)
                     .padding(.vertical, 20)
-                Text("John Doe")
+                Text("Jane Doe")
                     .font(.title)
                     .padding(.bottom, 10)
                 if isPremium {
